@@ -112,7 +112,7 @@ public class AuthService {
      */
     @GetMapping(path= AppConfig.AUTH_TOKEN_USER_PATH, produces=MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UserAuth> getUserCred(@RequestParam("access_token") String accessToken) {
-        if (accessToken == null || accessToken.equals("")) {
+        if (accessToken == null || "".equals(accessToken)) {
             logger.warn("No access token provided");
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         }

@@ -37,7 +37,7 @@ public class ReservationTxnManagerFactory {
     private String reservationTxnType;
 
     public ReservationTxnManager getInstance(JdbcTemplate jdbcTemplate) {
-        if (reservationTxnType.equals("Optimistic")) {
+        if ("Optimistic".equals(reservationTxnType)) {
             return new OptimisticReservation(jdbcTemplate, transactionTemplate);
         }
         // reservationTxnType.equals("Pessimistic")

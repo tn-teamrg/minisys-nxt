@@ -55,15 +55,15 @@ public class DBAdminMgr {
 
     private boolean manageDB(String dbTypeParam) {
         String dbType = environment.getProperty("database.type");
-        if (dbType == null || dbType.length() == 0 || dbType.equals("ALL"))
+        if (dbType == null || dbType.length() == 0 || "ALL".equals(dbType))
             return true;
         return dbType.equals(dbTypeParam) ? true : false;
     }
 
     private DBAdmin getDBAdmin(String dbType) {
-        if (dbType.equals("CQL")) {
+        if ("CQL".equals(dbType)) {
             return cqlAdmin;
-        } else if (dbType.equals("SQL")) {
+        } else if ("SQL".equals(dbType)) {
             return sqlAdmin;
         }
         return null;
@@ -72,7 +72,7 @@ public class DBAdminMgr {
     public DatabaseStatus getDBStatus(String dbType) {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Asia/Calcutta"));
-        String db = dbType.equals("SQL") ? "Postgres" : dbType.equals("CQL") ?
+        String db = "SQL".equals(dbType) ? "Postgres" : "CQL".equals(dbType) ?
                 "Cassandra" : "Unknown";
         DatabaseStatus dbStatus = new DatabaseStatus(db);
         DBAdmin dbAdmin = getDBAdmin(dbType);

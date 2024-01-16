@@ -57,7 +57,7 @@ public class CartService {
     @Secured({Role.ADMIN, Role.USER})
     @GetMapping(path= AppConfig.CART_PATH, produces=MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Cart> getCart(@PathVariable("id") String id) {
-        if (id.equals("")) {
+        if ("".equals(id)) {
             id = getUser();
         } else if (!id.equals(getUser())) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
@@ -94,7 +94,7 @@ public class CartService {
                             @RequestParam("productId") String productId,
                             @RequestParam("quantity") float quantity) {
         logger.info("Modify cart; cartId={}, productId={}, quantity={}", id, productId, quantity);
-        if (id == null || id.equals("")) {
+        if (id == null || "".equals(id)) {
             id = getUser();
         } else if (!id.equals(getUser())) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();

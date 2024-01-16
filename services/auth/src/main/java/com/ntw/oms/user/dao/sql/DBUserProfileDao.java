@@ -230,9 +230,9 @@ public class DBUserProfileDao implements UserProfileDao {
         List<com.ntw.oms.user.entity.Address> shippingAddresses = new LinkedList<>();
 
         for (DBAddress dbAddress : dbAddresses) {
-            if (dbAddress.getType().equals("bill")) {
+            if ("bill".equals(dbAddress.getType())) {
                 contactAddress = dbAddress.getAddress();
-            } else if (dbAddress.getType().equals("ship")) {
+            } else if ("ship".equals(dbAddress.getType())) {
                 shippingAddresses.add(dbAddress.getAddress());
             }
         }

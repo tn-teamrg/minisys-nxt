@@ -75,7 +75,7 @@ public class OrderService {
     @GetMapping(path= AppConfig.ORDER_PATH, produces=MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Order> getOrder(@PathVariable("id") String id) {
         String userId = getUser();
-        if (id.equals("")) {
+        if ("".equals(id)) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         Order order = getOrderServiceBean().fetchOrder(userId, id);

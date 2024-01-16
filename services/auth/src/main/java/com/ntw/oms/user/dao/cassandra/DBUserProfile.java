@@ -83,9 +83,9 @@ public class DBUserProfile {
         List<com.ntw.oms.user.entity.Address> shippingAddresses = new LinkedList<>();
 
         for (DBAddress dbAddress : dbAddresses) {
-            if (dbAddress.getAddressKey().getType().equals("bill")) {
+            if ("bill".equals(dbAddress.getAddressKey().getType())) {
                 contactAddress = dbAddress.getAddress();
-            } else if (dbAddress.getAddressKey().getType().equals("ship")) {
+            } else if ("ship".equals(dbAddress.getAddressKey().getType())) {
                 shippingAddresses.add(dbAddress.getAddress());
             }
         }
